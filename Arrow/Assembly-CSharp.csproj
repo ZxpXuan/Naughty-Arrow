@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Blocks.cs" />
     <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\PlayOnHitAudio.cs" />
     <Compile Include="Assets\Scripts\Arrow.cs" />
     <Compile Include="Assets\Scripts\Birds.cs" />
     <Compile Include="Assets\Scripts\boom.cs" />
@@ -73,6 +74,8 @@
     <Compile Include="Assets\Scripts\Stone.cs" />
     <Compile Include="Assets\Scripts\Tornado.cs" />
     <Compile Include="Assets\Scripts\TouchTrigger.cs" />
+    <Compile Include="Assets\SelfDestroy.cs" />
+    <None Include="Assets\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/U3D Games/Naughty-Arrow/Arrow/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

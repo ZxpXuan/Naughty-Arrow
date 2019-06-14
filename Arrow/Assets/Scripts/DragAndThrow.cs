@@ -90,8 +90,9 @@ public class DragAndThrow : MonoBehaviour
             dir = dir.normalized * maxForce/4;
         if (dir.sqrMagnitude < midForce)
             dir = dir.normalized * maxForce/8;
-        
-        rg.AddForce(dir, ForceMode2D.Impulse);
+
+		//rg.AddForce(dir, ForceMode2D.Impulse);
+		rg.velocity = dir;
     }
 
     void Awake()
@@ -133,7 +134,7 @@ public class DragAndThrow : MonoBehaviour
 
         if (Time_Max > 0)
         {
-            Time_Pers -= Time.deltaTime;
+            Time_Pers -= Time.unscaledDeltaTime;
             if (Time_Pers <= 0)
             {
                 Time_Pers += 1;

@@ -68,6 +68,7 @@ public class TouchTrigger : MonoBehaviour
 	{
 		if (!IsTriggerable (collider))
 			return;
+		print("Exit");
 		triggered = true;
 		StartCoroutine (Triggering(false));
 	}
@@ -87,6 +88,7 @@ public class TouchTrigger : MonoBehaviour
 				yield return new WaitForSeconds (EnterTriggerDelay);
 			if (OnEnter != null)
 				OnEnter.Invoke ();
+			print("Enter");
 		} else {
 			if (ExitTriggerDelay > 0)
 				yield return new WaitForSeconds (ExitTriggerDelay);

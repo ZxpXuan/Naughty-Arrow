@@ -14,6 +14,7 @@ public class Pigs : MonoBehaviour {
 
 	public Sprite hurt;
 
+	public GameObject onHit;
 	public GameObject boom;
 	public GameObject score;
 
@@ -68,12 +69,15 @@ public class Pigs : MonoBehaviour {
         hpSlider.minValue = 0 ;
         hpSlider.value = HP_Now;
     }
-	public void OnTriggerEnter2D(Collider2D collision){
-       
+	public void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.GetComponent<DragAndThrow>() == null) return;
+
         if (isMaster)
         {
             Calculate();
 
+			print(collision.name);
             var vel = collision.GetComponent<Rigidbody2D>().velocity;
 
             if (vel.magnitude > maxSpeed)
@@ -103,6 +107,10 @@ public class Pigs : MonoBehaviour {
             {
                 Dead();
             }
+			else
+			{
+				Instantiate(onHit, transform.position, Quaternion.identity);
+			}
         }
     }
     
