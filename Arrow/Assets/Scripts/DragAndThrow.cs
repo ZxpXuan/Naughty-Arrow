@@ -50,6 +50,7 @@ public class DragAndThrow : MonoBehaviour
     public Slider egSlider;
     public RectTransform rectTrans;
     public Transform target;
+	public LineRenderer aimingLine;
     public Vector2 offsetPos;
 
 	public Canvas Esc;
@@ -119,6 +120,17 @@ public class DragAndThrow : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
             OnPointerUp();
 
+		aimingLine.enabled = stopFlag;
+		if (stopFlag)
+		{
+			
+			var currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			var dir = (downPos - currentPosition);
+
+			aimingLine.SetPosition(0, target.position);
+			aimingLine.SetPosition(1, dir.normalized * 5 + target.position);
+		}
+
         if (Time_Max > 0)
         {
             Time_Pers -= Time.deltaTime;
@@ -161,7 +173,6 @@ public class DragAndThrow : MonoBehaviour
     /// </summary>
     public void OnPointerEnter()
     {
-        
         Time.fixedDeltaTime = 0.001f;
         Time.timeScale = 0.1f;
     }
@@ -204,7 +215,8 @@ public class DragAndThrow : MonoBehaviour
         }
     }
 
-	public void Restart(){
+	public void Restart()
+	{
 		Application.LoadLevel(0);
 	}
 	public void Quit(){
